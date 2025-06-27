@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burgerhouse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Pizzeria</h1>
+        <p>100% Geschmack. 0% Kompromisse</p>
+    </header>
+    <nav>
+        <div class="categories">
+            <button class="category-button active" data-category="pizzas">Pizzas</button>
+            <button class="category-button" data-category="vorspeissen">Vorspeissen</button>
+            <button class="category-button" data-category="drinks">Getränke</button>
+        </div>
+        <div class="cart-icon" id="cart-icon">
+            🛒
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </nav>
+    <main>
+        <h2>Unser Menü</h2>
+        <div class="menu-container" id="menu-container"></div>
+    </main>
+    <div id="cart-modal">
+        <div class="modal-header">
+            <h2>Warenkorb</h2>
+            <button class="close-modal" id="close-modal">×</button>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-total">
+            <span>Gesamt:</span>
+            <span id="total-price">0,00 CHF</span>
+        </div>
+        <button class="checkout-btn" id="checkout-btn" onclick="sendMail(event)">Zur Kasse</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

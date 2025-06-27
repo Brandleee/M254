@@ -1,0 +1,57 @@
+{
+  "components": [
+    {
+      "label": "order number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0hbygm1",
+        "columns": null
+      },
+      "id": "Field_1gufcjw",
+      "key": "orderNumber",
+      "readonly": true
+    },
+    {
+      "label": "table number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0exq4yp",
+        "columns": null
+      },
+      "id": "Field_03dy2qz",
+      "key": "tableNumber",
+      "readonly": true
+    },
+    {
+      "label": "order Time",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1a2exnm",
+        "columns": null
+      },
+      "id": "Field_0q4hwlb",
+      "key": "orderTime",
+      "readonly": true
+    },
+    {
+      "label": "order Items",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1xkq304",
+        "columns": null
+      },
+      "id": "Field_1dm8b0z",
+      "key": "orderItems",
+      "readonly": true
+    }
+  ],
+  "type": "default",
+  "id": "order_form",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.32.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.22.0",
+  "schemaVersion": 18
+}
