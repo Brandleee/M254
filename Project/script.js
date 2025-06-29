@@ -199,18 +199,39 @@ function saveOrder(tableNumber) {
     return order;
 }
 
-function showOrderDialog() {
+async function showOrderDialog() {
     if (!cart.length) return alert('Dein Warenkorb ist leer.');
     const tableNumber = prompt('Bitte geben Sie die Tischnummer ein:', '1');
     if (!tableNumber) return;
+
     const order = saveOrder(tableNumber);
-    if (order) {
-        alert('Bestellung wurde aufgenommen:\n\n' + createEmployeeOrderView(order));
+
+    const response = await fetch('http://localhost:8080/engine-rest/process-definition/key/restaurant-guest/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            businessKey: `order-${order.order_number}`,
+            variables: {
+                orderNumber: { value: order.order_number, type: "Integer" },
+                tableNumber: { value: parseInt(order.table_number), type: "Integer" },
+                orderTime: { value: order.order_time, type: "String" },
+                orderItems: { value: JSON.stringify(order.order_items), type: "Json" }
+            }
+        })
+    });
+
+    if (response.ok) {
+        alert('Bestellung wurde an Camunda übermittelt:\n\n' + createEmployeeOrderView(order));
         cart = [];
         updateCart();
         closeCartModal();
+    } else {
+        const errorText = await response.text();
+        console.error(errorText);
+        alert('Fehler beim Starten des Prozesses!');
     }
 }
+
 
 function addEmployeeSection() {
     const btn = document.createElement('button');
