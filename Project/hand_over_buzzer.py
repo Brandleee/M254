@@ -12,15 +12,15 @@ config = {
 
 def main():
     worker = ExternalTaskWorker(worker_id="1", config=config)
-    worker.subscribe("hand_over_buzzer", handle_buzzer)
+    worker.subscribe("hand_over_signal", handle_signal)
 
-def handle_buzzer(task: ExternalTask) -> TaskResult:
+def handle_signal(task: ExternalTask) -> TaskResult:
     print(f"TaskID ist {task.get_task_id()}")
 
-    set_buzzer = True
+    set_signal = True
 
     orderNumber = task.get_variable("orderNumber")
-    print(f"***** Buzzer '{orderNumber}' wurde vorgegeben")
+    print(f"***** Signal '{orderNumber}' wurde vorgegeben")
 
     return task.complete({"orderNumber": orderNumber})
 
